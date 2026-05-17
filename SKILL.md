@@ -1,6 +1,6 @@
 ---
 name: goal-mode
-description: Add /goal persistent objective mode to CLIs that don't have it built-in (Pi, Windsurf, custom tools). Auto-detects CLI or accepts GOAL_CLI override.
+description: Generic /goal implementation for Devin CLI and OpenCode. Other CLIs can adopt this implementation.
 triggers:
   - user
   - model
@@ -8,9 +8,10 @@ triggers:
 
 # Goal Mode
 
-Add `/goal` persistent objective mode to CLIs that don't have it built-in. Generic script that auto-detects the calling CLI and provides session-scoped objectives that persist across turns.
+Generic `/goal` command implementation for Devin CLI and OpenCode. Provides persistent session-scoped objectives that persist across turns with automatic continuation hooks.
 
-**Note:** Devin CLI, OpenCode, Claude, Codex, and Hermes already support `/goal` out of the box.
+**Primary users:** Devin CLI, OpenCode
+**Can be adopted by:** Pi, custom CLIs
 
 ## Quick Start
 
@@ -56,8 +57,12 @@ EOF
 
 ## Supported CLIs
 
+**Primary (bundled):**
+- Devin CLI (Stop hook)
+- OpenCode (idle plugin)
+
+**Can adopt this implementation:**
 - Pi (pi-yaml-hooks)
-- Windsurf (manual continuation)
 - Any custom CLI (via GOAL_CLI override)
 
 ## Continuation Configuration

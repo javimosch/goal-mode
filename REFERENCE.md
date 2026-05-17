@@ -207,7 +207,6 @@ Each tool has its own SQLite database derived from the detected CLI name:
 | devin | `~/.config/devin/goal/goals.sqlite` | `DEVIN_GOAL_HOME`, `DEVIN_GOAL_DB` |
 | opencode | `~/.config/opencode/goal/goals.sqlite` | `OPENCODE_GOAL_HOME`, `OPENCODE_GOAL_DB` |
 | pi | `~/.config/pi/goal/goals.sqlite` | `PI_GOAL_HOME`, `PI_GOAL_DB` |
-| windsurf | `~/.config/windsurf/goal/goals.sqlite` | `WINDSURF_GOAL_HOME`, `WINDSURF_GOAL_DB` |
 | generic | `~/.config/generic/goal/goals.sqlite` | `GOAL_HOME`, `GOAL_DB` |
 
 **Never share a single DB across tools** — session ID namespaces differ.
