@@ -1,6 +1,6 @@
 ---
 name: goal-mode
-description: Generic /goal command for any agentic CLI. Auto-detects the calling tool (Devin, OpenCode, Pi, etc.) or accepts GOAL_CLI override. Set persistent goals that persist across turns with automatic continuation hooks.
+description: Add /goal persistent objective mode to CLIs that don't have it built-in (Pi, Windsurf, custom tools). Auto-detects CLI or accepts GOAL_CLI override.
 triggers:
   - user
   - model
@@ -8,22 +8,24 @@ triggers:
 
 # Goal Mode
 
-Generic `/goal` command for any agentic CLI. Provides persistent session-scoped objectives that persist across turns, with automatic continuation hooks.
+Add `/goal` persistent objective mode to CLIs that don't have it built-in. Generic script that auto-detects the calling CLI and provides session-scoped objectives that persist across turns.
+
+**Note:** Devin CLI, OpenCode, Claude, Codex, and Hermes already support `/goal` out of the box.
 
 ## Quick Start
 
-**For a new CLI (e.g., pi, claude):**
+**For Pi:**
 ```bash
 # Install the skill
-npx skills add jarancibia/goal-mode
+npx skills add javimosch/goal-mode
 
 # Run the setup
 bash ~/.agents/skills/goal-mode/scripts/install.sh --all
 ```
 
-**Manual setup for a specific CLI:**
+**For any custom CLI:**
 ```bash
-CLI_NAME="<cli-name>"  # e.g., pi, claude
+CLI_NAME="<cli-name>"
 
 # Create directories and symlink
 mkdir -p ~/.config/$CLI_NAME/skills/goal/scripts
@@ -54,10 +56,9 @@ EOF
 
 ## Supported CLIs
 
-- Devin CLI (Stop hook)
-- OpenCode (idle plugin)
 - Pi (pi-yaml-hooks)
-- Any CLI (manual continuation)
+- Windsurf (manual continuation)
+- Any custom CLI (via GOAL_CLI override)
 
 ## Continuation Configuration
 

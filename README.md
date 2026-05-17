@@ -1,6 +1,6 @@
 # Goal Mode
 
-Generic `/goal` command for any agentic CLI. Auto-detects the calling tool (Devin, OpenCode, Pi, etc.) and provides persistent session-scoped objectives that persist across turns.
+Add `/goal` persistent objective mode to CLIs that don't have it built-in (Pi, Windsurf, custom tools). Generic script that auto-detects the calling CLI and provides session-scoped objectives that persist across turns.
 
 ## Installation
 
@@ -42,29 +42,23 @@ Once installed for your CLI, use the `/goal` command:
 
 ## Supported CLIs
 
-The generic script auto-detects and supports these CLIs:
+This repo adds goal mode to tools that **don't** have it built-in:
 
-| CLI | Status | Continuation Mechanism |
-|-----|--------|----------------------|
-| Devin CLI | ✅ Configured | Stop lifecycle hook |
-| OpenCode | ✅ Configured | idle plugin |
-| Claude | ⚠️ Supported | Manual (hooks TBD) |
-| Hermes | ⚠️ Supported | Manual (hooks TBD) |
-| Codex | ⚠️ Supported | Manual (hooks TBD) |
-| Pi | ⚠️ Supported | pi-yaml-hooks |
-| Windsurf | ⚠️ Supported | Manual (hooks TBD) |
+| CLI | Continuation Mechanism |
+|-----|----------------------|
+| Pi | pi-yaml-hooks |
+| Windsurf | Manual (hooks TBD) |
+| Custom CLIs | Manual (GOAL_CLI override) |
 
-**Legend:**
-- ✅ Configured: Symlinks and continuation hooks are set up
-- ⚠️ Supported: The script knows about the CLI, but requires manual setup of symlinks/hooks
+**Note:** Devin CLI, OpenCode, Claude, Codex, and Hermes already support `/goal` out of the box and don't need this repo.
 
-**To configure a supported CLI:**
+**To configure a CLI:**
 ```bash
 # Use the install script
 bash ~/.agents/skills/goal-mode/scripts/install.sh --all
 
 # Or manually for a specific CLI
-CLI_NAME="claude"
+CLI_NAME="pi"
 mkdir -p ~/.config/$CLI_NAME/skills/goal/scripts
 ln -s ~/.agents/skills/goal-mode/scripts/goal.py ~/.config/$CLI_NAME/skills/goal/scripts/${CLI_NAME}_goal.py
 ```

@@ -207,9 +207,6 @@ Each tool has its own SQLite database derived from the detected CLI name:
 | devin | `~/.config/devin/goal/goals.sqlite` | `DEVIN_GOAL_HOME`, `DEVIN_GOAL_DB` |
 | opencode | `~/.config/opencode/goal/goals.sqlite` | `OPENCODE_GOAL_HOME`, `OPENCODE_GOAL_DB` |
 | pi | `~/.config/pi/goal/goals.sqlite` | `PI_GOAL_HOME`, `PI_GOAL_DB` |
-| claude | `~/.config/claude/goal/goals.sqlite` | `CLAUDE_GOAL_HOME`, `CLAUDE_GOAL_DB` |
-| codex | `~/.config/codex/goal/goals.sqlite` | `CODEX_GOAL_HOME`, `CODEX_GOAL_DB` |
-| hermes | `~/.config/hermes/goal/goals.sqlite` | `HERMES_GOAL_HOME`, `HERMES_GOAL_DB` |
 | windsurf | `~/.config/windsurf/goal/goals.sqlite` | `WINDSURF_GOAL_HOME`, `WINDSURF_GOAL_DB` |
 | generic | `~/.config/generic/goal/goals.sqlite` | `GOAL_HOME`, `GOAL_DB` |
 
