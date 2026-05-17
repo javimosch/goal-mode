@@ -128,7 +128,7 @@ Continuation mechanism differs by tool:
 |------|-----------|
 | Devin CLI | `Stop` lifecycle hook blocks agent exit; re-injection via hook reason |
 | OpenCode | `session.idle` plugin event re-injects via `client.session.chat()` |
-| Pi | `pi-yaml-hooks` package with `session.idle` event and bash action to call stop-hook |
+|| Pi | `npm:@narumitw/pi-goal` (available May 16) |
 
 ---
 
@@ -184,7 +184,10 @@ Each tool has its own SQLite database derived from the detected CLI name:
 |-----|-----------|-------------------|
 | devin | `~/.config/devin/goal/goals.sqlite` | `DEVIN_GOAL_HOME`, `DEVIN_GOAL_DB` |
 | opencode | `~/.config/opencode/goal/goals.sqlite` | `OPENCODE_GOAL_HOME`, `OPENCODE_GOAL_DB` |
+| pi | `~/.config/pi/goal/goals.sqlite` | `PI_GOAL_HOME`, `PI_GOAL_DB` |
 | generic | `~/.config/generic/goal/goals.sqlite` | `GOAL_HOME`, `GOAL_DB` |
+
+**Note:** Pi uses its own goal mode implementation available via `npm:@narumitw/pi-goal` (published May 16), not this repo.
 
 **Never share a single DB across tools** — session ID namespaces differ.
 

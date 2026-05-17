@@ -11,6 +11,7 @@ triggers:
 Generic `/goal` command implementation for Devin CLI and OpenCode. Provides persistent session-scoped objectives that persist across turns with automatic continuation hooks.
 
 **Primary users:** Devin CLI, OpenCode
+**Also available:** Pi via `npm:@narumitw/pi-goal` (available May 16)
 
 ## Quick Start
 

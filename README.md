@@ -48,9 +48,10 @@ Once installed for your CLI, use the `/goal` command:
 |-----|--------|----------------------|
 | Devin CLI | ✅ Bundled | Stop lifecycle hook |
 | OpenCode | ✅ Bundled | idle plugin |
+| Pi | ✅ Bundled | `npm:@narumitw/pi-goal` (available May 16) |
 
 **Legend:**
-- ✅ Bundled: Devin CLI and OpenCode include this goal mode implementation
+- ✅ Bundled: Each CLI includes its own goal mode implementation
 
 ## Architecture
 
