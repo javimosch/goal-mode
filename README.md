@@ -7,13 +7,13 @@ Generic `/goal` command for any agentic CLI. Auto-detects the calling tool (Devi
 ### Via npx skills (recommended)
 
 ```bash
-npx skills add jarancibia/goal-mode
+npx skills add javimosch/goal-mode
 ```
 
 ### Manual installation
 
 ```bash
-git clone https://github.com/jarancibia/goal-mode.git ~/.agents/skills/goal-mode
+git clone https://github.com/javimosch/goal-mode.git ~/.agents/skills/goal-mode
 ```
 
 ## Quick Start
