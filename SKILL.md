@@ -8,10 +8,10 @@ triggers:
 
 # Goal Mode
 
-Generic `/goal` command implementation for Devin CLI and OpenCode. Provides persistent session-scoped objectives that persist across turns with automatic continuation hooks.
+Generic `/goal` command implementation for Devin CLI, OpenCode, and Pi. Provides persistent session-scoped objectives that persist across turns with automatic continuation hooks.
 
-**Primary users:** Devin CLI, OpenCode
-**Also available:** Pi via `npm:@narumitw/pi-goal` (available May 16)
+**Primary users:** Devin CLI, OpenCode, Pi
+**Note for Pi:** Pi has an alternative implementation via `npm:@narumitw/pi-goal` (available May 16) - if installed, do not use this repo to avoid conflicts.
 
 ## Quick Start
 
