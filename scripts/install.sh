@@ -35,7 +35,7 @@ install_for() {
 }
 
 # Install for all known CLIs
-for cli in devin opencode claude codex windsurf pi; do
+for cli in devin opencode claude codex windsurf pi hermes; do
     config_dir="$HOME/.config/$cli"
     if [[ -d "$config_dir" ]] || [[ "$*" == *"--all"* ]]; then
         install_for "$cli"
