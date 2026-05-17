@@ -35,7 +35,7 @@ install_for() {
 }
 
 # Install for all known CLIs
-for cli in devin opencode pi; do
+for cli in devin opencode; do
     config_dir="$HOME/.config/$cli"
     if [[ -d "$config_dir" ]] || [[ "$*" == *"--all"* ]]; then
         install_for "$cli"

@@ -2,7 +2,7 @@
 
 Generic `/goal` command implementation for Devin CLI and OpenCode. Provides persistent session-scoped objectives that persist across turns with automatic continuation hooks.
 
-This repo provides the goal mode implementation that Devin CLI and OpenCode bundle. Other CLIs (like Pi) can also adopt this implementation.
+This repo provides the goal mode implementation that Devin CLI and OpenCode bundle.
 
 ## Installation
 
@@ -48,25 +48,9 @@ Once installed for your CLI, use the `/goal` command:
 |-----|--------|----------------------|
 | Devin CLI | ✅ Bundled | Stop lifecycle hook |
 | OpenCode | ✅ Bundled | idle plugin |
-| Pi | ⚠️ Can adopt | pi-yaml-hooks |
-| Custom CLIs | ⚠️ Can adopt | Via GOAL_CLI override |
 
 **Legend:**
 - ✅ Bundled: Devin CLI and OpenCode include this goal mode implementation
-- ⚠️ Can adopt: Other CLIs can use this implementation with manual setup
-
-**To adopt for a CLI (e.g., Pi):**
-```bash
-# Use the install script
-bash ~/.agents/skills/goal-mode/scripts/install.sh --all
-
-# Or manually
-CLI_NAME="pi"
-mkdir -p ~/.config/$CLI_NAME/skills/goal/scripts
-ln -s ~/.agents/skills/goal-mode/scripts/goal.py ~/.config/$CLI_NAME/skills/goal/scripts/${CLI_NAME}_goal.py
-```
-
-See [REFERENCE.md](REFERENCE.md) for detailed continuation configuration for each CLI.
 
 ## Architecture
 

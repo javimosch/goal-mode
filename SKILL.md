@@ -1,6 +1,6 @@
 ---
 name: goal-mode
-description: Generic /goal implementation for Devin CLI and OpenCode. Other CLIs can adopt this implementation.
+description: Generic /goal implementation for Devin CLI and OpenCode.
 triggers:
   - user
   - model
@@ -11,38 +11,10 @@ triggers:
 Generic `/goal` command implementation for Devin CLI and OpenCode. Provides persistent session-scoped objectives that persist across turns with automatic continuation hooks.
 
 **Primary users:** Devin CLI, OpenCode
-**Can be adopted by:** Pi, custom CLIs
 
 ## Quick Start
 
-**For Pi:**
-```bash
-# Install the skill
-npx skills add javimosch/goal-mode
-
-# Run the setup
-bash ~/.agents/skills/goal-mode/scripts/install.sh --all
-```
-
-**For any custom CLI:**
-```bash
-CLI_NAME="<cli-name>"
-
-# Create directories and symlink
-mkdir -p ~/.config/$CLI_NAME/skills/goal/scripts
-ln -s ~/.agents/skills/goal-mode/scripts/goal.py ~/.config/$CLI_NAME/skills/goal/scripts/${CLI_NAME}_goal.py
-
-# Create skill registration
-cat > ~/.config/$CLI_NAME/skills/goal/SKILL.md << 'EOF'
----
-name: goal
-description: Persistent goal mode for this CLI.
-triggers: [user]
----
-# Goal
-/usr/bin/python3 ~/.config/$CLI_NAME/skills/goal/scripts/${CLI_NAME}_goal.py invoke "$ARGUMENTS"
-EOF
-```
+The goal mode is bundled with Devin CLI and OpenCode. No installation needed for those tools.
 
 ## Usage
 
@@ -55,19 +27,9 @@ EOF
 /goal --tokens 250K <obj>  — set with soft token budget
 ```
 
-## Supported CLIs
-
-**Primary (bundled):**
-- Devin CLI (Stop hook)
-- OpenCode (idle plugin)
-
-**Can adopt this implementation:**
-- Pi (pi-yaml-hooks)
-- Any custom CLI (via GOAL_CLI override)
-
 ## Continuation Configuration
 
-See [REFERENCE.md](REFERENCE.md) for detailed setup instructions for each CLI's continuation mechanism.
+See [REFERENCE.md](REFERENCE.md) for detailed setup instructions for Devin CLI (Stop hook) and OpenCode (idle plugin).
 
 ## Architecture
 

@@ -19,7 +19,7 @@ from typing import Any
 # ---------------------------------------------------------------------------
 # Auto-detect CLI tool
 # ---------------------------------------------------------------------------
-KNOWN_CLIS = ("devin", "opencode", "pi")
+KNOWN_CLIS = ("devin", "opencode")
 
 
 def _detect_cli() -> str:

@@ -103,20 +103,6 @@ pi.on("session.idle", (e, ctx) => {
 });
 ```
 
-**Pi (pi-yaml-hooks):**
-```bash
-pi install npm:pi-yaml-hooks
-mkdir -p ~/.pi/agent/hook
-cat > ~/.pi/agent/hook/hooks.yaml <<'YAML'
-hooks:
-  - event: session.idle
-    actions:
-      - bash: |
-          out=$(PI_GOAL_SESSION_ID=$PI_SESSION_ID /usr/bin/python3 ~/.config/pi/skills/goal/scripts/pi_goal.py stop-hook <<< '{"session_id":"'"$PI_SESSION_ID"'","cwd":"'"$PI_PROJECT_DIR"'"}')
-          echo "$out" | grep -q '"decision":"block"' && echo "$out" | jq -r '.reason'
-YAML
-```
-
 **Tools without hooks:** Goals work fully (set, pause, resume, status, clear, complete) but require manual continuation prompts.
 
 ---
@@ -177,14 +163,6 @@ Continuation mechanism differs by tool:
 
 OpenCode is **not** installed on dk2 — only Devin.
 
-### Pi (any machine)
-
-| Path | Purpose |
-|------|---------|
-| `~/.config/pi/skills/goal/SKILL.md` | Pi skill registration |
-| `~/.config/pi/skills/goal/scripts/pi_goal.py` | **symlink** -> `~/.agents/skills/goal-mode/scripts/goal.py` |
-| `~/.pi/agent/hook/hooks.yaml` | pi-yaml-hooks config for `session.idle` event |
-
 ---
 
 ## Generic Script Design
@@ -206,7 +184,6 @@ Each tool has its own SQLite database derived from the detected CLI name:
 |-----|-----------|-------------------|
 | devin | `~/.config/devin/goal/goals.sqlite` | `DEVIN_GOAL_HOME`, `DEVIN_GOAL_DB` |
 | opencode | `~/.config/opencode/goal/goals.sqlite` | `OPENCODE_GOAL_HOME`, `OPENCODE_GOAL_DB` |
-| pi | `~/.config/pi/goal/goals.sqlite` | `PI_GOAL_HOME`, `PI_GOAL_DB` |
 | generic | `~/.config/generic/goal/goals.sqlite` | `GOAL_HOME`, `GOAL_DB` |
 
 **Never share a single DB across tools** — session ID namespaces differ.
