@@ -32,6 +32,57 @@ The goal mode is bundled with Devin CLI and OpenCode. No installation needed for
 
 See [REFERENCE.md](REFERENCE.md) for detailed setup instructions for Devin CLI (Stop hook) and OpenCode (idle plugin).
 
+## Removal / Cleanup
+
+### Remove Goal Mode from Devin CLI
+
+Remove the Stop lifecycle hook from `~/.config/devin/config.json`:
+
+```bash
+# Remove the "stop" hook from config.json
+# Edit the file and remove the stop lifecycle hook section
+```
+
+Delete goal database and state:
+
+```bash
+rm -f ~/.config/devin/goal.db
+```
+
+### Remove Goal Mode from OpenCode
+
+Remove the idle plugin:
+
+```bash
+rm -f ~/.config/opencode/plugins/goal-continue.js
+```
+
+Delete goal database and state:
+
+```bash
+rm -f ~/.config/opencode/goal.db
+```
+
+### Remove Goal Mode from Pi
+
+Remove the goal skill directory:
+
+```bash
+rm -rf ~/.config/pi/skills/goal
+```
+
+Delete goal database and state:
+
+```bash
+rm -f ~/.config/pi/goal.db
+```
+
+**Note:** If using Pi's npm package (`@narumitw/pi-goal`), uninstall it instead:
+
+```bash
+npm uninstall -g @narumitw/pi-goal
+```
+
 ## Architecture
 
 The generic script auto-detects the calling CLI and stores per-tool isolated state in SQLite databases. See [REFERENCE.md](REFERENCE.md) for full architecture details.

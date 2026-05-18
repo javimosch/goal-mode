@@ -30,6 +30,27 @@ bash ~/.agents/skills/goal-mode/scripts/install.sh --all
 
 This will create symlinks for: devin, opencode, claude, codex, windsurf, pi
 
+## Uninstall / Removal
+
+To remove goal mode from all CLIs:
+
+```bash
+bash ~/.agents/skills/goal-mode/scripts/install.sh --uninstall
+```
+
+To remove from a specific CLI:
+
+```bash
+# Remove from specific CLI (e.g., just pi)
+bash ~/.agents/skills/goal-mode/scripts/install.sh --uninstall --all
+# Then manually clean up other CLIs as needed
+```
+
+**Note:** The uninstall script removes symlinks and databases, but you may also need to manually remove tool-specific configuration:
+- **Devin:** Remove Stop hook from `~/.config/devin/config.json`
+- **OpenCode:** Remove idle plugin from `~/.config/opencode/plugins/`
+- **Pi:** If using npm package, run `npm uninstall -g @narumitw/pi-goal`
+
 ## Usage
 
 Once installed for your CLI, use the `/goal` command:
