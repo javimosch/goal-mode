@@ -125,8 +125,12 @@ def session_id() -> str:
     term = _term_session_id()
     if term:
         return term
+    # Use PPID (parent process ID) to distinguish between different CLI sessions
+    # This fixes the issue where multiple Devin sessions in the same directory shared goals
+    ppid = os.environ.get("PPID") or str(os.getppid())
     cwd = os.environ.get("PWD") or str(Path.cwd())
-    return "cwd:" + hashlib.sha256(cwd.encode()).hexdigest()[:16]
+    combined = f"{ppid}:{cwd}"
+    return "ppid:" + hashlib.sha256(combined.encode()).hexdigest()[:16]
 
 
 def _cwd_session_id(cwd: str | None) -> str | None:
@@ -143,7 +147,11 @@ def candidate_session_ids(hook_data: dict[str, Any] | None = None) -> list[str]:
         sources.append(_cwd_session_id(hook_data.get("cwd")))
     sources.append(_term_session_id())
     cwd = os.environ.get("PWD") or str(Path.cwd())
+    # Include both old cwd-based and new ppid-based session IDs for migration
     sources.append("cwd:" + hashlib.sha256(cwd.encode()).hexdigest()[:16])
+    ppid = os.environ.get("PPID") or str(os.getppid())
+    combined = f"{ppid}:{cwd}"
+    sources.append("ppid:" + hashlib.sha256(combined.encode()).hexdigest()[:16])
     sources.append(session_id())
     for v in sources:
         if v and v not in out:
